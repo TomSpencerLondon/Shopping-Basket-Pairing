@@ -4,15 +4,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryShoppingBasketRepositoryShould {
 
+    @Test
+    public void find_a_basket_by_user() {
+        InMemoryShoppingBasketRepository repo = new InMemoryShoppingBasketRepository();
+        User user = new User("123");
+        Basket basket = repo.findOrCreate(user);
+        assertNotNull(basket);
+        assertEquals(user, basket.getUser());
+    }
 
-  @Test
-  void creates_a_basket_attached_to_a_user() {
-    User user = new User("ABC123");
-    InMemoryShoppingBasketRepository repository = new InMemoryShoppingBasketRepository();
-    Product product = new Product("ABC678", "bike", 5);
+    @Test
+    public void save_basket() {
+        InMemoryShoppingBasketRepository repo = new InMemoryShoppingBasketRepository();
+        User user = new User("456");
 
-    repository.addToBasket(user, product, 1);
+        Basket basket = new Basket(user);
+        repo.save(basket);
 
-    assertNotNull(repository.getBasketBy(user));
-  }
+        assertEquals(basket, repo.findOrCreate(user));
+    }
+
 }

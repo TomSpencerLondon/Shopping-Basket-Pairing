@@ -1,0 +1,7 @@
+Product.class
+ShoppingBasketService.class
+User.class
+ShoppingBasketRepository.class
+InMemoryShoppingBasketRepository.class
+Basket.class
+ProductID.class
