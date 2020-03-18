@@ -4,10 +4,10 @@ import org.mockito.Mock;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AcceptanceTest {
-    @Mock User user;
 
     @Test
     void shopping_basket_returns_products_added() {
+        User user = new User("ABC1234");
         ShoppingBasketRepository shoppingBasketRepository = new InMemoryShoppingBasketRepository();
         ShoppingBasketService shoppingBasketService = new ShoppingBasketService(shoppingBasketRepository);
         Product hobbit = new Product("10002", "The Hobbit", 5);

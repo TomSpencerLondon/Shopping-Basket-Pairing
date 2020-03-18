@@ -1,10 +1,13 @@
 public class ShoppingBasketService {
+    private ShoppingBasketRepository shoppingBasketRepository;
+
     public ShoppingBasketService(ShoppingBasketRepository shoppingBasketRepository) {
-        throw new UnsupportedOperationException();
+
+        this.shoppingBasketRepository = shoppingBasketRepository;
     }
 
     public void addItem(User user, Product product, int quantity) {
-        throw new UnsupportedOperationException();
+        shoppingBasketRepository.addToBasket(user, product, quantity);
     }
 
     public Basket basketFor(User user) {
