@@ -1,14 +1,19 @@
-public class InMemoryShoppingBasketRepository implements ShoppingBasketRepository {
+import java.util.HashMap;
+import java.util.Map;
 
-  // attribute stored baskets
-  // HashSet(key = userID, value = basket)
+public class InMemoryShoppingBasketRepository implements ShoppingBasketRepository {
+  private Map<User, Basket> baskets;
+
+  public InMemoryShoppingBasketRepository() {
+    this.baskets = new HashMap<>();
+  }
 
   public void addToBasket(User user, Product product, int quantity) {
-    // Add basket to the HashSet with UserID
-
+    Basket basket = new Basket();
+    baskets.put(user, basket);
   }
 
   public Basket getBasketBy(User user) {
-    throw new UnsupportedOperationException();
+    return baskets.get(user);
   }
 }
